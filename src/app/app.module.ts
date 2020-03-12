@@ -1,12 +1,15 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { ComponentsModule } from './components/components.module';
 import { RoutingModule } from './routing.module';
 import { AppComponent } from './root/app.component';
+import { ComponentsModule } from './components/components.module';
+
+import { HomeComponent } from './containers/home/home.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

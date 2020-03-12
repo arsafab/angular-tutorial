@@ -1,0 +1,10 @@
+<button
+  class="btn"
+  [attr.disabled]="isDisabled"
+  [ngClass]="{
+    active: isActive,
+    invert: isInverted
+  }"
+>
+  {{ text | uppercase }}
+</button>

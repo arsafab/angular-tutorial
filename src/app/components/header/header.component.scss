@@ -1,0 +1,53 @@
+@import 'variables';
+
+:host {
+  position: relative;
+  display: block;
+  min-height: 30vh;
+
+  .bg {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    width: 100%;
+    min-height: calc(30vh + 15px);
+    background: url('/assets/images/header-bg.jpeg');
+    background-size: cover;
+    filter: blur(7px) grayscale(0.7);
+    z-index: $bgIndex;
+  }
+
+  .logo-wrapper {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    z-index: $contentIndex;
+  }
+
+  .logo {
+    margin: 0;
+    font-weight: bold;
+    font-size: 2rem;
+    color: $activeColor;
+
+    span {
+      font-weight: normal;
+    }
+  }
+
+  .content-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 25vh;
+    min-width: 400px;
+    max-width: 600px;
+    width: 50vw;
+    margin: 0 auto;
+    z-index: $contentIndex;
+  }
+}
+
+

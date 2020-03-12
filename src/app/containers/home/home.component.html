@@ -1,0 +1,26 @@
+<app-header>
+  <div class="form-container">
+    <app-input class="search-input"></app-input>
+    <app-button [text]="buttons.search"></app-button>
+  </div>
+  <div class="attribute-container">
+    <span class="label-text">Search by:</span>
+    <app-button-group class="btn-group">
+      <app-button [isActive]="true" [text]="buttons.title"></app-button>
+      <app-button [text]="buttons.genre"></app-button>
+    </app-button-group>
+  </div>
+</app-header>
+
+<div class="filter-wrapper">
+  <div class="container">
+    <span>7 movies found</span>
+    <div class="attribute-container">
+      <span class="label-text">Search by:</span>
+      <app-button-group class="btn-group">
+        <app-button [isActive]="true" [text]="buttons.title"></app-button>
+        <app-button [text]="buttons.genre"></app-button>
+      </app-button-group>
+    </div>
+  </div>
+</div>
