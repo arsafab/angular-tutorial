@@ -6,13 +6,15 @@ import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { ButtonGroupComponent } from './button-group/button-group.component';
 import { ListGroupComponent } from './list-group/list-group.component';
+import { FooterComponent } from './footer/footer.component';
 
 const components = [
   HeaderComponent,
   ButtonComponent,
   InputComponent,
   ButtonGroupComponent,
-  ListGroupComponent
+  ListGroupComponent,
+  FooterComponent
 ];
 
 @NgModule({

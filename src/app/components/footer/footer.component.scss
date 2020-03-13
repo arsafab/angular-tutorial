@@ -1,0 +1,18 @@
+@import 'variables';
+
+.footer {
+  display: flex;
+  justify-content: center;
+  padding: 10px 15px;
+  background-color: $dark-grey2;
+
+  .logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: $activeColor;
+
+    & > span {
+      font-weight: normal;
+    }
+  }
+}
