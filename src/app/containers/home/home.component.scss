@@ -14,6 +14,7 @@
 
 .main {
   position: relative;
+  margin-bottom: 70px;
 }
 
 .attribute-container {
@@ -45,5 +46,19 @@
     justify-content: space-between;
     align-items: center;
     padding: 5px 15px;
+  }
+}
+
+.movie-list {
+  .movie-item {
+    min-width: 210px;
+
+    @media (max-width: 1000px) {
+      margin-right: 5px;
+
+      &:last-child {
+        margin-right: 0;
+      }
+    }
   }
 }

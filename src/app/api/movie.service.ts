@@ -10,9 +10,8 @@ import { IMovie } from '../shared/models';
 })
 export class MovieService {
   public readonly movies: BehaviorSubject<IMovie[]> = new BehaviorSubject([]);
-  public readonly totalNumber: BehaviorSubject<number> = new BehaviorSubject(0);
   private readonly baseUrl: string = 'http://reactjs-cdp.herokuapp.com';
-  private limit: number = 9;
+  private limit: number = 500;
 
   constructor(
     private http: HttpClient
@@ -24,14 +23,13 @@ export class MovieService {
     return this.http
       .get(url)
       .pipe(
-        tap((response: IMovieResponse) => {
-          this.movies.next(response.data);
-          this.totalNumber.next(response.total);
-        }),
+        tap((response: IMovieResponse) => this.movies.next(response.data)),
         catchError((error: Error) => this.wrapError)
       )
       .toPromise();
   }
+
+  public getById(): void {}
 
   private wrapError(error: Error): Promise<string> {
     console.error(error);

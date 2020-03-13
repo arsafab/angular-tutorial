@@ -2,7 +2,9 @@ import {
   Component,
   ChangeDetectionStrategy,
   Input,
-  OnChanges
+  OnChanges,
+  Output,
+  EventEmitter
 } from '@angular/core';
 
 @Component({
@@ -12,6 +14,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class PaginationComponent implements OnChanges {
+  @Output() public readonly emitCurrentPage = new EventEmitter<number>();
   public currentPage: number = 0;
   public totalPageNumber: number;
 
@@ -21,6 +24,11 @@ export class PaginationComponent implements OnChanges {
     if (this.totalMoviesNumber) {
       this.setCurrentPage();
     }
+  }
+
+  public onClick(page: number): void {
+    this.currentPage = page;
+    this.emitCurrentPage.next(this.currentPage);
   }
 
   private setCurrentPage(): void {

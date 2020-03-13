@@ -1,12 +1,19 @@
 @import 'variables';
 
 .item {
+  min-width: 210px;
+  max-width: 300px;
+
+  @media (max-width: 1200px) {
+    max-width: 210px;
+  }
+
   .image {
     display: block;
 
     &:hover {
       opacity: 0.9;
-      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.75);
+      box-shadow: 0 -8px 5px 5px rgba(0, 0, 0, 0.75);
       transition: all 0.4s;;
     }
   }

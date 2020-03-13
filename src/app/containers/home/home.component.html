@@ -17,7 +17,7 @@
 
   <div class="filter-wrapper">
     <div class="container">
-      <span>{{ movieService.totalNumber | async }} movies found</span>
+      <span>{{ (movieService.movies | async).length }} movies found</span>
       <div class="attribute-container">
         <span class="label-text">Sort by:</span>
         <app-button-group class="btn-group">
@@ -31,13 +31,17 @@
   <div class="movie-list">
     <app-list-group>
       <app-movie-item
-        *ngFor="let item of movieService.movies | async"
+        class="movie-item"
+        *ngFor="let item of moviesList"
         [movie]="item"
       ></app-movie-item>
     </app-list-group>
   </div>
 
-  <app-pagination [totalMoviesNumber]="(movieService.totalNumber | async)"></app-pagination>
+  <app-pagination
+    [totalMoviesNumber]="(movieService.movies | async).length"
+    (emitCurrentPage)="getNextPage($event)"
+  ></app-pagination>
 </main>
 
 <app-footer></app-footer>

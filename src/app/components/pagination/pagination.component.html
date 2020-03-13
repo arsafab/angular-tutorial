@@ -1,6 +1,16 @@
 <div *ngIf="totalPageNumber" class="pagination">
   <app-button-group class="btn-group">
-    <app-button [isDisabled]="currentPage === 0">Prev</app-button>
-    <app-button [isDisabled]="currentPage === totalPageNumber">Next</app-button>
+    <app-button
+      [isDisabled]="currentPage === 0"
+      (click)="onClick(currentPage - 1)"
+    >
+      Prev
+    </app-button>
+    <app-button
+      [isDisabled]="currentPage === totalPageNumber"
+      (click)="onClick(currentPage + 1)"
+    >
+      Next
+    </app-button>
   </app-button-group>
 </div>

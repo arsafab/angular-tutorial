@@ -9,7 +9,7 @@ import { delay } from 'rxjs/operators';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoaderComponent {
-  public loading: boolean = true;
+  public isLoading: boolean = true;
 
   constructor(
     private readonly changeDetector: ChangeDetectorRef
@@ -19,8 +19,13 @@ export class LoaderComponent {
     of(null)
       .pipe(delay(1000))
       .subscribe(() => {
-        this.loading = false;
+        this.isLoading = false;
         this.changeDetector.detectChanges();
       });
+  }
+
+  public loading(): void {
+    this.isLoading = true;
+    this.changeDetector.detectChanges();
   }
 }
