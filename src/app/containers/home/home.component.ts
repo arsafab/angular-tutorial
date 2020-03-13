@@ -8,14 +8,19 @@ import {
 import { MovieService } from './../../api/movie.service';
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { IMovie } from './../../shared/models/movie';
+import { Sorting } from '../../../app/shared/constants';
+import { OrderByPipe } from 'src/app/shared/pipes/orderBy.pipe';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  providers: [ OrderByPipe ]
 })
 export class HomeComponent implements AfterViewInit{
+  public sortingValues = Sorting;
+  public currentSorting: Sorting = Sorting.Rating;
   public readonly buttons: { [key: string]: string } = {
     search: 'search',
     title: 'title',
@@ -30,14 +35,16 @@ export class HomeComponent implements AfterViewInit{
 
   constructor(
     public readonly movieService: MovieService,
-    private readonly changeDetector: ChangeDetectorRef
+    private readonly changeDetector: ChangeDetectorRef,
+    private orderByPipe: OrderByPipe
   ) {}
 
   public ngAfterViewInit(): void {
     this.movieService.movies
       .subscribe((data: IMovie[]) => {
         if (data) {
-          this.movies = data;
+          console.log(data);
+          this.sortBy(data);
           this.moviesList = this.movies.slice(0, 9);
           this.loaderComponent.dataLoaded();
           this.changeDetector.detectChanges();
@@ -52,6 +59,13 @@ export class HomeComponent implements AfterViewInit{
 
     this.loaderComponent.loading();
     this.moviesList = this.movies.slice(offset, offset + 9);
+    this.loaderComponent.dataLoaded();
+  }
+
+  public sortBy(data: IMovie[], prop: Sorting = Sorting.Rating): void {
+    this.loaderComponent.loading();
+    this.movies = this.orderByPipe.transform(data, prop);
+    this.currentSorting = prop;
     this.loaderComponent.dataLoaded();
   }
 }

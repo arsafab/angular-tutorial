@@ -21,8 +21,20 @@
       <div class="attribute-container">
         <span class="label-text">Sort by:</span>
         <app-button-group class="btn-group">
-          <app-button [isActive]="true">{{ buttons.rating }}</app-button>
-          <app-button>{{ buttons.releaseDate }}</app-button>
+          <app-button
+            [isActive]="currentSorting === sortingValues.Rating"
+            (click)="sortBy(moviesList)"
+            #ratingBtn
+          >
+            {{ buttons.rating }}
+          </app-button>
+          <app-button
+            [isActive]="currentSorting === sortingValues.ReleaseDate"
+            (click)="sortBy(moviesList, sortingValues.ReleaseDate)"
+            #releaseDateBtn
+          >
+            {{ buttons.releaseDate }}
+          </app-button>
         </app-button-group>
       </div>
     </div>
