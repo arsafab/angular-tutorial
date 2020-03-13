@@ -1,5 +1,5 @@
-import { IMovie } from './../../shared/models/movie';
 import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
+import { IMovie } from '../../shared/models/movie';
 
 @Component({
   selector: 'app-movie-item',

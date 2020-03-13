@@ -7,23 +7,26 @@ import { ComponentsModule } from './components/components.module';
 import { SharedModule } from './shared/shared.module';
 
 import { MovieService } from './api/movie.service';
-import { initApp } from './api/init-function';
+import { IMovieResponse } from './shared/models';
 
 import { HomeComponent } from './containers/home/home.component';
-import { MovieItemComponent } from './containers/movie-item/movie-item.component';
+import { MovieComponent } from './containers/movie/movie.component';
+
+
+function initApp(movieService: MovieService) {
+  return (): Promise<IMovieResponse> => movieService.getAll();
+}
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MovieItemComponent
+    MovieComponent
   ],
   imports: [
     BrowserModule,
-    RoutingModule,
     HttpClientModule,
-    ComponentsModule,
-    SharedModule
+    ComponentsModule
   ],
   providers: [
     {

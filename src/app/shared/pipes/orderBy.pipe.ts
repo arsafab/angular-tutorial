@@ -14,8 +14,8 @@ export class OrderByPipe implements PipeTransform {
       const secondElem = field ? b[field] : b;
 
       return firstElem < secondElem
-        ? -1
-        : firstElem > secondElem ? 1 : 0;
+        ? 1
+        : firstElem > secondElem ? -1 : 0;
     });
 
     return array;

@@ -18,7 +18,7 @@ import { OrderByPipe } from 'src/app/shared/pipes/orderBy.pipe';
   changeDetection: ChangeDetectionStrategy.OnPush,
   providers: [ OrderByPipe ]
 })
-export class HomeComponent implements AfterViewInit{
+export class HomeComponent implements AfterViewInit {
   public sortingValues = Sorting;
   public currentSorting: Sorting = Sorting.Rating;
   public readonly buttons: { [key: string]: string } = {
@@ -46,7 +46,6 @@ export class HomeComponent implements AfterViewInit{
           console.log(data);
           this.sortBy(data);
           this.moviesList = this.movies.slice(0, 9);
-          this.loaderComponent.dataLoaded();
           this.changeDetector.detectChanges();
         }
       });

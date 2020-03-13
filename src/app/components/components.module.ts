@@ -9,6 +9,7 @@ import { ListGroupComponent } from './list-group/list-group.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { LoaderComponent } from './loader/loader.component';
+import { MovieItemComponent } from './movie-item/movie-item.component';
 
 const components = [
   HeaderComponent,
@@ -18,7 +19,8 @@ const components = [
   ListGroupComponent,
   FooterComponent,
   PaginationComponent,
-  LoaderComponent
+  LoaderComponent,
+  MovieItemComponent
 ];
 
 @NgModule({

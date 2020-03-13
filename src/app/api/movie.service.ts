@@ -1,8 +1,8 @@
 import { IMovieResponse } from './../shared/models/movie-response';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { BehaviorSubject } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { BehaviorSubject, Observable } from 'rxjs';
+import { tap, catchError, map } from 'rxjs/operators';
 import { IMovie } from '../shared/models';
 
 @Injectable({
@@ -11,7 +11,7 @@ import { IMovie } from '../shared/models';
 export class MovieService {
   public readonly movies: BehaviorSubject<IMovie[]> = new BehaviorSubject([]);
   private readonly baseUrl: string = 'http://reactjs-cdp.herokuapp.com';
-  private limit: number = 500;
+  private limit: number = 80;
 
   constructor(
     private http: HttpClient
@@ -29,7 +29,15 @@ export class MovieService {
       .toPromise();
   }
 
-  public getById(): void {}
+  public getById(id: number): Observable<object | IMovie> {
+    const url = `${this.baseUrl}/movies/${id}`;
+
+    return this.http
+      .get(url)
+        .pipe(
+          catchError((error: Error) => this.wrapError)
+        );
+  }
 
   private wrapError(error: Error): Promise<string> {
     console.error(error);
