@@ -1,0 +1,45 @@
+@import 'variables';
+
+.item {
+  .image {
+    display: block;
+
+    &:hover {
+      opacity: 0.9;
+      box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.75);
+      transition: all 0.4s;;
+    }
+  }
+
+  .description {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-top: 10px;
+
+    & > * {
+      margin-bottom: 2px;
+    }
+  }
+
+  .title {
+    display: block;
+    width: 75%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .release-date {
+    position: relative;
+    top: -4px;
+    padding: 3px 5px;
+    border: 1px solid $grey;
+    border-radius: 3px;
+  }
+
+  .genre {
+    font-size: 1.2rem;
+    color: $white2;
+  }
+}

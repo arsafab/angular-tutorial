@@ -5,12 +5,14 @@ import { HeaderComponent } from './header/header.component';
 import { ButtonComponent } from './button/button.component';
 import { InputComponent } from './input/input.component';
 import { ButtonGroupComponent } from './button-group/button-group.component';
+import { ListGroupComponent } from './list-group/list-group.component';
 
 const components = [
   HeaderComponent,
   ButtonComponent,
   InputComponent,
-  ButtonGroupComponent
+  ButtonGroupComponent,
+  ListGroupComponent
 ];
 
 @NgModule({

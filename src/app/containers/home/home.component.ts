@@ -1,4 +1,6 @@
+import { IMovie } from './../../shared/models/movie';
 import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { MovieService } from './../../api/movie.service';
 
 @Component({
   selector: 'app-home',
@@ -7,9 +9,14 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-  public buttons: { [key: string]: string } = {
+  public readonly buttons: { [key: string]: string } = {
     search: 'search',
     title: 'title',
     genre: 'genre'
-  }
+  };
+  public movies: IMovie[];
+
+  constructor(
+    public readonly movieService: MovieService
+  ) {}
 }

@@ -7,8 +7,8 @@ import { Component, ChangeDetectionStrategy, Input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class InputComponent {
-  @Input() public type: string = 'text';
-  @Input() public label: string;
-  @Input() public error: string;
-  @Input() public isRequired: boolean;
+  @Input() public readonly type: string = 'text';
+  @Input() public readonly label: string;
+  @Input() public readonly error: string;
+  @Input() public readonly isRequired: boolean;
 }

@@ -14,13 +14,22 @@
 
 <div class="filter-wrapper">
   <div class="container">
-    <span>7 movies found</span>
+    <span>{{ movieService.totalNumber | async }} movies found</span>
     <div class="attribute-container">
-      <span class="label-text">Search by:</span>
+      <span class="label-text">Sort by:</span>
       <app-button-group class="btn-group">
         <app-button [isActive]="true" [text]="buttons.title"></app-button>
         <app-button [text]="buttons.genre"></app-button>
       </app-button-group>
     </div>
   </div>
+</div>
+
+<div class="movie-list">
+  <app-list-group>
+    <app-movie-item
+      *ngFor="let item of movieService.movies | async"
+      [movie]="item"
+    ></app-movie-item>
+  </app-list-group>
 </div>

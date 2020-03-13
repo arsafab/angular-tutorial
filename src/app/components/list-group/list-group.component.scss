@@ -1,0 +1,12 @@
+.list-wrapper::ng-deep {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: 0 auto;
+
+  & > * {
+    display: flex;
+    justify-content: center;
+    width: 33%;
+  }
+}

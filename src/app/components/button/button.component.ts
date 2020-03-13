@@ -7,8 +7,8 @@ import { Component, Input, ChangeDetectionStrategy } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ButtonComponent {
-  @Input() public text: string;
-  @Input() public isActive: boolean;
-  @Input() public isDisabled: boolean;
-  @Input() public isInverted: boolean;
+  @Input() public readonly text: string;
+  @Input() public readonly isActive: boolean;
+  @Input() public readonly isDisabled: boolean;
+  @Input() public readonly isInverted: boolean;
 }
