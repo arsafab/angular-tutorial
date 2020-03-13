@@ -7,6 +7,7 @@ import { InputComponent } from './input/input.component';
 import { ButtonGroupComponent } from './button-group/button-group.component';
 import { ListGroupComponent } from './list-group/list-group.component';
 import { FooterComponent } from './footer/footer.component';
+import { PaginationComponent } from './pagination/pagination.component';
 
 const components = [
   HeaderComponent,
@@ -14,7 +15,8 @@ const components = [
   InputComponent,
   ButtonGroupComponent,
   ListGroupComponent,
-  FooterComponent
+  FooterComponent,
+  PaginationComponent
 ];
 
 @NgModule({

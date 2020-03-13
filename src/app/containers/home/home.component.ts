@@ -12,7 +12,9 @@ export class HomeComponent {
   public readonly buttons: { [key: string]: string } = {
     search: 'search',
     title: 'title',
-    genre: 'genre'
+    genre: 'genre',
+    releaseDate: 'release date',
+    rating: 'rating'
   };
   public movies: IMovie[];
 
