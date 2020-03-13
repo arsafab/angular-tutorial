@@ -24,8 +24,8 @@
     position: absolute;
     left: 8px;
     width: 16px;
-    background: #fff;
-    animation: lds-facebook 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
+    background: $white;
+    animation: loader 1.2s cubic-bezier(0, 0.5, 0.5, 1) infinite;
   }
 
   div:nth-child(1) {
@@ -44,7 +44,7 @@
   }
 }
 
-@keyframes lds-facebook {
+@keyframes loader {
   0% {
     top: 8px;
     height: 64px;
