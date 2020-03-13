@@ -1,8 +1,12 @@
 @import 'variables';
 
 .footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   display: flex;
   justify-content: center;
+  width: 100%;
   padding: 10px 15px;
   background-color: $dark-grey2;
 

@@ -8,6 +8,7 @@ import { ButtonGroupComponent } from './button-group/button-group.component';
 import { ListGroupComponent } from './list-group/list-group.component';
 import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { LoaderComponent } from './loader/loader.component';
 
 const components = [
   HeaderComponent,
@@ -16,7 +17,8 @@ const components = [
   ButtonGroupComponent,
   ListGroupComponent,
   FooterComponent,
-  PaginationComponent
+  PaginationComponent,
+  LoaderComponent
 ];
 
 @NgModule({
