@@ -10,7 +10,7 @@ import { IMovie } from '../shared/models';
 })
 export class MovieService {
   public readonly movies: BehaviorSubject<IMovie[]> = new BehaviorSubject([]);
-  private readonly baseUrl: string = 'reactjs-cdp.herokuapp.com';
+  private readonly baseUrl: string = 'https://reactjs-cdp.herokuapp.com';
   private limit: number = 80;
 
   constructor(
