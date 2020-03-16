@@ -6,10 +6,18 @@
   width: 100%;
 
   .search-input {
+    height: 37px;
     min-width: 400px;
     width: 100%;
     max-width: 400px;
     margin-right: 4px;
+    box-sizing: border-box;
+    padding: 12px;
+    border: 1px solid $dark-grey2;
+    border-radius: 5px;
+    background-color: $dark-grey2;
+    color: $white;
+    outline: none;
   }
 }
 
@@ -62,4 +70,10 @@
       }
     }
   }
+}
+
+.no-found {
+  text-align: center;
+  padding: 40px 15px;
+  font-size: 3rem;
 }

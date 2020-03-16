@@ -1,13 +1,24 @@
 <app-header>
   <div class="form-container">
-    <app-input class="search-input"></app-input>
-    <app-button>{{ buttons.search }}</app-button>
+    <input type="text" class="search-input" [(ngModel)]="query" />
+
+    <app-button (click)="searchBy(currentSearch)">{{ buttons.search }}</app-button>
   </div>
   <div class="attribute-container">
     <span class="label-text">Search by:</span>
     <app-button-group class="btn-group">
-      <app-button [isActive]="true">{{ buttons.genre }}</app-button>
-      <app-button>{{ buttons.title }}</app-button>
+      <app-button
+        [isActive]="currentSearch === searchValues.Overview"
+        (click)="currentSearch = searchValues.Overview"
+      >
+        {{ buttons.overview }}
+      </app-button>
+      <app-button
+        [isActive]="currentSearch === searchValues.Title"
+        (click)="currentSearch = searchValues.Title"
+      >
+        {{ buttons.title }}
+      </app-button>
     </app-button-group>
   </div>
 </app-header>
@@ -40,7 +51,7 @@
     </div>
   </div>
 
-  <div class="movie-list">
+  <div *ngIf="moviesList.length" class="movie-list">
     <app-list-group>
       <app-movie-item
         class="movie-item"
@@ -50,7 +61,10 @@
     </app-list-group>
   </div>
 
+  <p *ngIf="!moviesList.length" class="no-found">No movies founded</p>
+
   <app-pagination
+    *ngIf="moviesList.length"
     [totalMoviesNumber]="(movieService.movies | async).length"
     (emitCurrentPage)="getNextPage($event)"
   ></app-pagination>

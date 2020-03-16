@@ -2,7 +2,7 @@ import { IMovieResponse } from './../shared/models/movie-response';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { tap, catchError, map } from 'rxjs/operators';
+import { tap, catchError } from 'rxjs/operators';
 import { IMovie } from '../shared/models';
 
 @Injectable({

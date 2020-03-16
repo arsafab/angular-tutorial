@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { RoutingModule } from './routing.module';
 import { AppComponent } from './root/app.component';
 import { ComponentsModule } from './components/components.module';
@@ -26,6 +27,7 @@ function initApp(movieService: MovieService) {
     BrowserModule,
     HttpClientModule,
     RoutingModule,
+    FormsModule,
     ComponentsModule
   ],
   providers: [

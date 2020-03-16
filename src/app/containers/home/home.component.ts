@@ -8,7 +8,7 @@ import {
 import { MovieService } from './../../api/movie.service';
 import { LoaderComponent } from 'src/app/components/loader/loader.component';
 import { IMovie } from './../../shared/models/movie';
-import { Sorting } from '../../../app/shared/constants';
+import { Sorting, Search } from '../../../app/shared/constants';
 import { OrderByPipe } from 'src/app/shared/pipes/orderBy.pipe';
 
 @Component({
@@ -20,17 +20,21 @@ import { OrderByPipe } from 'src/app/shared/pipes/orderBy.pipe';
 })
 export class HomeComponent implements AfterViewInit {
   public sortingValues = Sorting;
+  public searchValues = Search;
+  public query: string;
   public currentSorting: Sorting = Sorting.Rating;
+  public currentSearch: Search = Search.Overview;
   public readonly buttons: { [key: string]: string } = {
     search: 'search',
     title: 'title',
-    genre: 'genre',
+    overview: 'overview',
     releaseDate: 'release date',
     rating: 'rating'
   };
   public moviesList: IMovie[] = [];
 
   @ViewChild(LoaderComponent) private readonly loaderComponent: LoaderComponent;
+  private initialData: IMovie[] = [];
   private movies: IMovie[] = [];
 
   constructor(
@@ -42,11 +46,8 @@ export class HomeComponent implements AfterViewInit {
   public ngAfterViewInit(): void {
     this.movieService.movies
       .subscribe((data: IMovie[]) => {
-        if (data) {
-          this.sortBy(data);
-          this.moviesList = this.movies.slice(0, 9);
-          this.changeDetector.detectChanges();
-        }
+        this.initialData = data;
+        this.setMovies(data);
       });
   }
 
@@ -65,5 +66,17 @@ export class HomeComponent implements AfterViewInit {
     this.movies = this.orderByPipe.transform(data, prop);
     this.currentSorting = prop;
     this.loaderComponent.dataLoaded();
+  }
+
+  public searchBy(prop: Search): void {
+    const reg = new RegExp(this.query, 'gim');
+    const founded = this.initialData.filter(item => reg.test(item[prop]));
+    this.setMovies(founded);
+  }
+
+  private setMovies(data: IMovie[]): void {
+    this.sortBy(data);
+    this.moviesList = this.movies.slice(0, 9);
+    this.changeDetector.detectChanges();
   }
 }
