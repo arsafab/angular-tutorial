@@ -1,7 +1,8 @@
-import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieService } from 'src/app/api/movie.service';
 import { IMovie } from 'src/app/shared/models';
+import { LoaderComponent } from 'src/app/components/loader/loader.component';
 
 @Component({
   selector: 'app-movie',
@@ -9,22 +10,36 @@ import { IMovie } from 'src/app/shared/models';
   styleUrls: ['./movie.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MovieComponent implements OnInit {
+export class MovieComponent implements OnInit, AfterViewInit {
   public movie: IMovie;
+  public recommendedList: IMovie[];
+
+  @ViewChild(LoaderComponent) private readonly loaderComponent: LoaderComponent;
+  private movies: IMovie[];
 
   constructor(
-    private route: ActivatedRoute,
+    private readonly route: ActivatedRoute,
+    private readonly changeDetector: ChangeDetectorRef,
     private readonly movieService: MovieService
   ) {}
 
   public ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const { id } = params;
-      const movies = this.movieService.movies.value;
-
-      this.movie = movies.find(item => item.id === Number(id));
-
-      console.log(this.movie)
+    this.route.params.subscribe(({ id: routerId }) => {
+      this.movies = this.movieService.movies.value;
+      this.movie = this.movies.find(({ id }) => id === Number(routerId));
     });
+  }
+
+  public ngAfterViewInit(): void {
+    this.setRecommendedMovies();
+  }
+
+  private setRecommendedMovies(): void {
+    this.recommendedList = this.movies.filter(({ genres }) => (
+      !!genres.find(genre => this.movie.genres.includes(genre))
+    )).slice(0, 9);
+
+    this.loaderComponent.dataLoaded();
+    this.changeDetector.detectChanges();
   }
 }

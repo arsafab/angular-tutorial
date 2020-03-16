@@ -27,3 +27,30 @@
     </div>
   </div>
 </app-header>
+
+<div class="genre-wrapper">
+  <div class="container">
+    <span>Films by
+      <span class="genre" *ngFor="let item of movie.genres; let last = last">
+        {{ last ? item : item + ', ' }}
+      </span>
+      {{ movie.genres.length > 1 ? 'genres' : 'genre'  }}
+    </span>
+  </div>
+</div>
+
+<main class="main">
+  <app-loader></app-loader>
+
+  <div class="movie-list">
+    <app-list-group>
+      <app-movie-item
+        class="movie-item"
+        *ngFor="let item of recommendedList"
+        [movie]="item"
+      ></app-movie-item>
+    </app-list-group>
+  </div>
+</main>
+
+<app-footer></app-footer>

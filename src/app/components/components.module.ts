@@ -10,6 +10,7 @@ import { FooterComponent } from './footer/footer.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { LoaderComponent } from './loader/loader.component';
 import { MovieItemComponent } from './movie-item/movie-item.component';
+import { RouterModule } from '@angular/router';
 
 const components = [
   HeaderComponent,
@@ -29,6 +30,7 @@ const components = [
   ],
   imports: [
     SharedModule,
+    RouterModule
   ],
   exports: [
     ...components

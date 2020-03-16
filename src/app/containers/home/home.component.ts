@@ -43,7 +43,6 @@ export class HomeComponent implements AfterViewInit {
     this.movieService.movies
       .subscribe((data: IMovie[]) => {
         if (data) {
-          console.log(data);
           this.sortBy(data);
           this.moviesList = this.movies.slice(0, 9);
           this.changeDetector.detectChanges();

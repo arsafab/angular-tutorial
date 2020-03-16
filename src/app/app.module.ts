@@ -4,7 +4,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { RoutingModule } from './routing.module';
 import { AppComponent } from './root/app.component';
 import { ComponentsModule } from './components/components.module';
-import { SharedModule } from './shared/shared.module';
 
 import { MovieService } from './api/movie.service';
 import { IMovieResponse } from './shared/models';
@@ -26,6 +25,7 @@ function initApp(movieService: MovieService) {
   imports: [
     BrowserModule,
     HttpClientModule,
+    RoutingModule,
     ComponentsModule
   ],
   providers: [
