@@ -14,7 +14,7 @@ import { MovieComponent } from './containers/movie/movie.component';
 
 
 function initApp(movieService: MovieService) {
-  return (): Promise<IMovieResponse> => movieService.getAll();
+  return (): Promise<IMovieResponse | string> => movieService.getAll();
 }
 
 @NgModule({
