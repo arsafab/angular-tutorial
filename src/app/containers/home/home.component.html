@@ -66,7 +66,7 @@
   <app-pagination
     *ngIf="moviesList.length"
     [totalMoviesNumber]="(movieService.movies | async).length"
-    (emitCurrentPage)="getNextPage($event)"
+    (emitCurrentPage)="setMoviesList($event)"
   ></app-pagination>
 </main>
 
