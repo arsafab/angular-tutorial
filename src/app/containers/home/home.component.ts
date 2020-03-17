@@ -51,7 +51,7 @@ export class HomeComponent implements AfterViewInit {
       });
   }
 
-  public getNextPage(page: number): void {
+  public setMoviesList(page: number): void {
     const offset = page * 9;
 
     window.scrollTo({ left: 0, top: 0, behavior: 'smooth' });
